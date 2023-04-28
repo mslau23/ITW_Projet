@@ -17,7 +17,34 @@
     <!-- le contenu de la page -->
     <main>
       <section><p>Bienvenue sur la page de contribuation !</p></section>
-
+      <section>
+        <form name="formulaire" method="post" action="ajouter.php">
+            <table>
+                <tr>
+                    <td>Nom de la randonée :</td>
+                    <td><input name="nom" type="text" id="nom" /></td>
+                </tr>
+                <tr>
+                    <td>Description :</td>
+                    <td><input name="description" type="text" id="description" /></td>
+                </tr>
+                <tr>
+                    <td>Adresse du  point de départ :</td>
+                    <td><input name="adresse" type="text" id="adresse"/></td>
+                </tr>
+                <tr>
+                    <td>Photo :</td>
+                    <td><input name="photo" type="image" id="photo"/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="Submit" value="Envoyer" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            </form>
+      </section>
     </main>
   </body>
 </html>
