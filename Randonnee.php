@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php
+  <head>
+    <meta charset="utf-8" />
+    <title>Randonnee</title>
+    <link rel="stylesheet" href="Communs.css" type="text/css" />
+  </head>
+  <body>
+    <!-- le menu de navigation -->
+    <nav>
+      <ul class="barre-de-menu">
+        <li><a href="Contribuer.html">Contribuer</a></li>
+        <li><a href="Randonner.html" class="actuel">Randonner</a></li>
+      </ul>
+    </nav>
+
+    <!-- le contenu de la page -->
+    <main>
+      <section><p>Bienvenue sur la page de Randonnee !</p></section>
+      <!-- traitement bdd -->
+      <section>
+      <?php
  //Connexion au serveur
  $dsn = "mysql:host=" . localhost . ";dbname=" . $rando;
  $user = root;
@@ -31,5 +50,8 @@
  //Fermeture de la connexion
  $resultat->closeCursor();
  $idcom = NULL;
-?>
+?>              
+      </section>
+    </main>
+  </body>
 </html>
