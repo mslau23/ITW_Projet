@@ -19,12 +19,12 @@
       <section><h1>Bienvenue sur la page de Randonnee !</h1></section>
       <!-- traitement bdd -->
       <section>
-        <p>ici devra s'afficher la liste des randonnées stocké dans la bdd et ceu dans l'ordre alphabétique</p>
+        <p>ici devra s'afficher la liste des randonnées stocké dans la bdd et dans l'ordre alphabétique</p>
       <?php
  //Connexion au serveur
- $dsn = "mysql:host=" . localhost . ";dbname=" . $rando;
- $user = root;
- $pass = root;
+ $dsn = "mysql:host=localhost;dbname=" . $rando;
+ $user = "root";
+ $pass = "root";
  $idcom = new PDO($dsn,$user,$pass);
  //Contrôle de la connexion
  if(!$idcom) {
