@@ -55,3 +55,16 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+  
+  .popularity {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .popularity .score {
+    margin-left: 5px;
+    font-weight: bold;
+    color: #ff9900;
+  }
