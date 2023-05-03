@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Contribuer</title>
+    <link rel="stylesheet" href="Communs.css" type="text/css" />
+  </head>
+  <body>
+    <!-- le menu de navigation -->
+    <nav>
+      <ul class="barre-de-menu">
+        <li><a href="Contribuer.html" class="actuel">Contribuer</a></li>
+        <li><a href="Randonner.html">Randonner</a></li>
+      </ul>
+    </nav>
+
+    <!-- le contenu de la page -->
+    <main>
+      <section><h1>Randonnee Exemple1</h1></section>
+      <section>
+        <p>Description</p>
+        <div class="popularity">
+            <span>Popularité :</span>
+            <span class="score">0</span>
+            <button onclick="incrementPopularity()">J'aime</button>
+            <script>
+                function incrementPopularity() {
+                 const scoreElement = document.querySelector('.popularity .score');
+                 let score = parseInt(scoreElement.textContent);
+                 score++;
+                 scoreElement.textContent = score.toString();
+                }
+            </script>
+        </div>
+
+
+      </section>
+    </main>
+  </body>
+</html>
