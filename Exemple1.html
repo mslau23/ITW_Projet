@@ -31,13 +31,7 @@
           <script>
               function incrementPopularity(value) {
                   const scoreElement = document.querySelector('.popularity .score');
-                  let score = parseInt(scoreElement.textContent);
-                  if (score >= 5) {
-                      alert('Vous avez déjà donné la note maximale');
-                      return;
-                  }
-                  score += value;
-                  scoreElement.textContent = score.toString();
+                  scoreElement.textContent = value.toString();
               }
           </script>
       </div>
