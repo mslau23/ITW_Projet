@@ -19,7 +19,7 @@
       <section><h1>Bienvenue sur la page de contribuation !</h1></section>
       <section>
         <!-- formulaire de contribution à la base de donnees des randonnées-->
-        <form name="formulaire" method="post" action="Randonner.php">
+        <form name="formulaire" method="post" action="ajout.php">
             <table>
                 <tr>
                     <td>Nom de la randonée :</td>
@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>Description :</td>
-                    <td><input name="description" type="text" id="description" /></td>
+                    <td><textarea name="description" id="description"></textarea></td>
                 </tr>
                 <tr>
                     <td>Adresse du  point de départ :</td>
@@ -35,11 +35,11 @@
                 </tr>
                 <tr>
                     <td>Photo :</td>
-                    <td><input name="photo" type="image" id="photo"/></td>
+                    <td><input name="photo" type="file" id="photo"/></td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" name="Submit" value="Envoyer" />
+                        <input type="submit" name="Submit" value="Ajouter la randonnée" />
                         </div>
                     </td>
                 </tr>
