@@ -23,6 +23,17 @@
   h2 {
     color: var(--couleur-0);
   }
+  li{
+    list-style-type: none;
+    margin-top: 15px;
+  }
+
+  td{
+    margin-top: 50px;
+  }
+  .rando{
+    margin-top: 15px;
+  }
   /*style des barre de menu*/
   .barre-de-menu {
     background-color: var(--couleur-0);
@@ -87,4 +98,19 @@
   .popularity button:hover {
     background-color: var(--couleur-2);
   }
+  /*Style de la page exemple*/
+  .imageLac { 
+    margin:0px;
+    
+   }
+
+   .icones{
+    text-align: center;
+    margin-left: 50px;
+   }
+
+   .A{
+    margin-left: 10px;
+    margin-top: 15px;
+   }
   

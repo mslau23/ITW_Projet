@@ -18,39 +18,24 @@
     <main>
       <section><h1>Bienvenue sur la page de Randonnee !</h1></section>
       <!-- traitement bdd -->
-      <section>
-        <p>ici devra s'afficher la liste des randonnées stocké dans la bdd et dans l'ordre alphabétique</p>
       <?php
  //Connexion au serveur
- $dsn = "mysql:host=localhost;dbname=" . $rando;
- $user = "root";
- $pass = "root";
- $idcom = new PDO($dsn,$user,$pass);
- //Contrôle de la connexion
- if(!$idcom) {
- echo "Erreur";
- }
- //*************************************************
- //Requêtes SQL sur la base choisie
- $valnom=$_POST['nom'];
- $valdescription=$_POST['description'];
- $valadresse=$_POST['adresse'];
- $inserer = "INSERT INTO rando (nom, description, adresse) VALUES ( '$valnom','$valdescription','$valadresse');" ;
- $resultat=$idcom->query($inserer);
- $ordonner = "SELECT * FROM rando ORDER BY nom";
- $resultat=$idcom->query($ordonner);
- //Lecture des résultats
- echo "<ul>";
- while($ligne = $resultat->fetch(PDO::FETCH_NUM)){
-    for($i=0; $i<count($ligne); $i++){
-        echo "<li>$ligne[$i]</li>";
-    }
- }
- echo "</ul>";
- //*************************************************
- //Fermeture de la connexion
- $resultat->closeCursor();
- $idcom = NULL;
+$user = 'root';
+$pass = '';
+//$donnees = '';
+try{
+  $bd=new PDO('mysql:host=localhost;dbname=randoBDD',$user,$pass);
+  $a = $bd->query('SELECT nom, adresse FROM rando ORDER BY nom');
+// Affichage de chaque ligne
+  while(($donnees = $a->fetch(PDO::FETCH_ASSOC)) !== false){
+    echo '<a href="'.$donnees['nom'].'.html">'.$donnees['nom'].'</a><br><li><img src=puce.png , alt="localisation", width="15" height="15"/> Départ : '.$donnees['adresse'].'</li><br><br>';
+
+  }
+}
+catch(PDOException $e){
+  print"Erreur :" . $e->getMessage() . "<br/>";
+  die;
+}
 ?>              
       </section>
     </main>

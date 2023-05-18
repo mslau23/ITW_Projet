@@ -16,9 +16,40 @@
 
     <!-- le contenu de la page -->
     <main>
-      <section><h1>Randonnee Exemple1</h1></section>
-      <section>
-        <p>Description</p>
+      <section><h1>Le lac Achard</h1></section>
+
+      <div class="imageLac">
+        <div style='display:flex'>
+            <img src=lac-achard2.jpg , alt="Photo Lac Achard", width="400" height="250"/>
+            <img src=lac-achard.jpg , alt="Photo Lac Achard", width="400" height="250"/>
+            <img src=lac-achard3.jpg , alt="Photo Lac Achard", width="400" height="250"/>
+            <img src=lac-achard4.jpg , alt="Photo Lac Achard", width="400" height="250"/>
+        </div>    
+      </div>
+      <main>
+        
+        
+        <section>
+        <p>Le lac Achard est un lac emblématique des alentours de Grenoble, niché au coeur de la montagne, dans la station de Chamrousse. </p>
+        <p> La randonnée qui y mène est facile et agréable, et la vue une fois arrivé est superbe.</p>
+        <p> C'est la randonnée idéale à faire en famille, l'été, pour fuir la chaleur étouffante de la ville .</p>
+        <div class="icones">
+            <div style="display:flex">
+            <img src=time_clock_icon.png , alt="temps", width="50" height="50"/>
+            <li> Durée: 2h </li></div>
+            <div style="display:flex"> 
+            <img src= effort.jpg , alt="effort", width="50" height="50"/>
+            <li>Difficulté: facile</li>
+            </div>
+            <div style="display:flex">
+            <img src=icon-denivele.png , alt="denivele", width="50" height="50"/>
+            <li>Dénivelé: 250 mètres</li>   
+            </div>
+            <div style="display:flex">
+            <img src=puce.png , alt="localisation", width="50" height="50"/>
+            <li>Départ: Plateau de l'arselle, Chamrousse</li>   
+            </div>
+        </div>
         <!--score de popularité avec des boutons de 1 à 5-->
         <div class="popularity">
           <span>Popularité :</span>
@@ -32,10 +63,6 @@
               function incrementPopularity(value) {
                   const scoreElement = document.querySelector('.popularity .score');
                   let score = parseInt(scoreElement.textContent);
-                  if (score >= 5) {
-                      alert('Vous avez déjà donné la note maximale');
-                      return;
-                  }
                   score = value;
                   scoreElement.textContent = score.toString();
               }
