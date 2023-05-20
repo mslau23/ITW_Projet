@@ -27,13 +27,9 @@
       $desc = $_POST["description"];
       $adresse = $_POST["adresse"];
       $photo=$nameFile;
-      $sql = "INSERT INTO `rando`(`nom`,`description`,`adresse`,`photo`) VALUES (\"";
 
+      $sql = "INSERT INTO `rando`(`nom`,`description`,`adresse`,`photo`) VALUES (\"".$nomR."\",\"".$desc."\",\"".$adresse."\",\"".$photo."\")";
 
-      $sql.=$nomR.="\",\"";
-      $sql.=$desc.="\",\"";
-      $sql.=$adresse.="\",\"";
-      $sql.=$photo.="\")";
       $user = 'root';
       $pass = '';
      
@@ -77,14 +73,45 @@ $pageHtml = '
 </nav>
 <section><h1>'.$nom.'</h1></section>
 <section>
-        <img src="images/'.$nameFile.'" , alt="Photo Lac Achard", width="400" height="250"/>
+<img src="images/'.$nameFile.'" , alt="photo '.$nom.'", width="400" height="250"/></h1></section>
+<div class= "icones">
+  <p>'.$desc2.'</p>
 
-        <p>'.$desc2.'</p>
+  <div style="display:flex">
+      <img src=puce.png , alt="localisation", width="30" height="30"/>
+      <li>Départ: '.$adresse2.'</li>   
+  </div>
 
-        <div style="display:flex">
-            <img src=puce.png , alt="localisation", width="50" height="50"/>
-            <li>Départ: '.$adresse2.'</li>   
-            </div>
+      <!--score de popularité avec un bouton jaime-->
+  <div class="popularity">
+              <span>Popularité :</span>
+              <span class="score"></span>
+              
+     <form action="'.$nom.'.php">
+              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="1") { echo "style=color:green";} ?>  name="choix" value="1" onclick="insert()">1</button>
+              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="2") { echo "style=color:green";} ?> name="choix" value="2" onclick="insert()">2</button>
+              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="3") { echo "style=color:green";} ?> name="choix" value="3" onclick="insert()">3</button>
+              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="4") { echo "style=color:green";} ?> name="choix" value="4" onclick="insert()">4</button>
+              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="5") { echo "style=color:green";} ?> name="choix" value="5" onclick="insert()">5</button>
+     </form>
+
+     <?php
+        if (isset($_GET[\'choix\'])) {
+           //connection à la bdd pour enregistrer le score
+          $user = \'root\';
+          $pass = \'\';
+ 
+          //Création d une nouvelle ligne dans la base de donnée selon les informations rentrées par l utilisateur
+          $bd=new PDO(\'mysql:host=localhost;dbname=randobdd\',$user,$pass);
+          $note=$_GET[\'choix\'];
+          
+
+          $scoreSQL = \'UPDATE rando SET score = \'.$note.\' WHERE nom= "'.$nom.'"\';
+          $bd->query($scoreSQL);
+        }
+     ?>
+     </div>
+</section>
 </body>
 </html>';
 
