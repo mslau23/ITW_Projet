@@ -9,8 +9,8 @@
     <!-- le menu de navigation -->
     <nav>
       <ul class="barre-de-menu">
-        <li><a href="Contribuer.html">Contribuer</a></li>
-        <li><a href="Randonner.html" class="actuel">Randonner</a></li>
+        <li><a href="Contribuer.php">Contribuer</a></li>
+        <li><a href="Randonner.php" class="actuel">Randonner</a></li>
       </ul>
     </nav>
 
