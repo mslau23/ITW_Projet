@@ -4,11 +4,32 @@
 
     <!-- le contenu de la page -->
      <?php
+    //traitement de l'image
+  
+    $dir='C:\xampp\htdocs\images';
+    $nameFile = $_FILES['fileImg']['name'];
+    $tmpFile = $_FILES['fileImg']['tmp_name'];
+    $typeFile = explode(".",$nameFile)[1];
+
+    $correct=array("png",'jpg',"gif");
+    
+
+
+    if(in_array($typeFile, $correct)){
+      move_uploaded_file($tmpFile,$dir ."/". $nameFile);
+    }
+
+    else{
+        echo "le type de fichier est incorrect";
+    }
+    //fin du traitement de l'image
       $nomR = $_POST["nomRando"];
       $desc = $_POST["description"];
       $adresse = $_POST["adresse"];
-      $photo =$_POST["photo"];
-      $sql = "INSERT INTO `montagne`(`nom`,`description`,`adresse`,`photo`) VALUES (\"";
+      $photo=$nameFile;
+      $sql = "INSERT INTO `rando`(`nom`,`description`,`adresse`,`photo`) VALUES (\"";
+
+
       $sql.=$nomR.="\",\"";
       $sql.=$desc.="\",\"";
       $sql.=$adresse.="\",\"";
@@ -18,11 +39,11 @@
      
       //Création d'une nouvelle ligne dans la base de donnée selon les informations rentrées par l'utilisateur
       try{
-        $bd=new PDO('mysql:host=localhost;dbname=randoBDD',$user,$pass);
+        $bd=new PDO('mysql:host=localhost;dbname=randobdd',$user,$pass);
         $bd->query($sql);
         $a = $bd->query('SELECT nom,description,adresse,photo FROM rando ORDER BY nom');
  
- /* while(($donnees = $a->fetch(PDO::FETCH_ASSOC)) !== false){
+ /*while(($donnees = $a->fetch(PDO::FETCH_ASSOC)) !== false){
     echo $donnees['nom'].' '.$donnees['description'].' '.$donnees['adresse'].' '.$donnees['photo'].'<br>';
 
   }*/
@@ -31,6 +52,8 @@
         print"Erreur :" . $e->getMessage() . "<br/>";
         die;
       }
+
+
 
 //Création de la page HTML de la contribution
 $nom = $_POST["nomRando"];
@@ -54,6 +77,7 @@ $pageHtml = '
 </nav>
 <section><h1>'.$nom.'</h1></section>
 <section>
+        <img src="images/'.$nameFile.'" , alt="Photo Lac Achard", width="400" height="250"/>
 
         <p>'.$desc2.'</p>
 
@@ -65,12 +89,12 @@ $pageHtml = '
 </html>';
 
 $newFile = $nom;
-$open = fopen($newFile.'.html','w');
+$open = fopen($newFile.'.php','w');
 fwrite($open,$pageHtml);
 fclose($open);
 
 //redirection sur la page nouvellement créée, attention ne pas faire d'echo ou de html avant
-header("location:".$newFile.".html\"");
+header("location:".$newFile.".php");
       ?>
 
   </body>
