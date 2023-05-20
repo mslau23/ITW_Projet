@@ -11,6 +11,7 @@
       <ul class="barre-de-menu">
         <li><a href="Contribuer.php">Contribuer</a></li>
         <li><a href="Randonner.php" class="actuel">Randonner</a></li>
+        <li><a href="Connexion.php">Connexion</a></li>
       </ul>
     </nav>
 
@@ -42,7 +43,7 @@
           $resultat = $bd->query($requete);
           // Affichage de chaque ligne
           while(($donnees = $resultat->fetch(PDO::FETCH_ASSOC)) !== false){
-            echo '<a href="'.$donnees['nom'].'.html">'.$donnees['nom'].'</a><br><li><img src=puce.png , alt="localisation", width="15" height="15"/> Départ : '.$donnees['adresse'].'</li><br><br>';
+            echo '<a href="'.$donnees['nom'].'.php">'.$donnees['nom'].'</a><br><li><img src=puce.png , alt="localisation", width="15" height="15"/> Départ : '.$donnees['adresse'].'</li><br><br>';
 
           }
         }
