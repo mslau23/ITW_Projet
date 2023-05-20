@@ -37,7 +37,7 @@
           if ($tri == 'nom') {
             $requete .= ' ORDER BY nom'; // Tri par nom
           } elseif ($tri == 'popularite') {
-            $requete .= ' ORDER BY score DESC'; // Tri par popularité (supposons que la colonne de popularité s'appelle 'popularite')
+            $requete .= ' ORDER BY score DESC'; // Tri par popularité
           }
           $resultat = $bd->query($requete);
           // Affichage de chaque ligne
