@@ -8,8 +8,8 @@
 	 <!-- le menu de navigation -->
      <nav>
       <ul class="barre-de-menu">
-        <li><a href="Contribuer.html" class="actuel">Contribuer</a></li>
-        <li><a href="Randonner.html">Randonner</a></li>
+        <li><a href="Contribuer.php" class="actuel">Contribuer</a></li>
+        <li><a href="Randonner.php">Randonner</a></li>
       </ul>
     </nav>
 
