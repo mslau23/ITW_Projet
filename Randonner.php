@@ -11,7 +11,17 @@
       <ul class="barre-de-menu">
         <li><a href="Contribuer.php">Contribuer</a></li>
         <li><a href="Randonner.php" class="actuel">Randonner</a></li>
-        <li><a href="Connexion.php">Connexion</a></li>
+        <?php
+            // Vérifier si l'utilisateur est connecté
+            session_start();
+            $sessionId = session_id();
+            if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+                echo $sessionId;
+            }
+            else{
+                echo '<li><a href="Connexion.php">Connexion</a></li>';
+            }
+            ?>
       </ul>
     </nav>
 
