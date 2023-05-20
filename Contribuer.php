@@ -4,6 +4,15 @@
     <meta charset="utf-8" />
     <title>Contribuer</title>
     <link rel="stylesheet" href="Communs.css" type="text/css" />
+    <?php
+      // Vérifier si l'utilisateur est connecté
+      session_start();
+      if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
+      // Rediriger vers la page de connexion
+        header('Location: Connexion.php');
+        exit();
+      }
+?>
   </head>
   <body>
     <!-- le menu de navigation -->
@@ -11,6 +20,7 @@
       <ul class="barre-de-menu">
         <li><a href="Contribuer.php" class="actuel">Contribuer</a></li>
         <li><a href="Randonner.php">Randonner</a></li>
+        <li><a href="Connexion.php">Connexion</a></li>
       </ul>
     </nav>
 

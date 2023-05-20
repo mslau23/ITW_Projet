@@ -10,6 +10,7 @@
       <ul class="barre-de-menu">
         <li><a href="Contribuer.php" class="actuel">Contribuer</a></li>
         <li><a href="Randonner.php">Randonner</a></li>
+        <li><a href="Connexion.php">Connexion</a></li>
       </ul>
     </nav>
 
