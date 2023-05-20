@@ -17,26 +17,40 @@
     <!-- le contenu de la page -->
     <main>
       <section><h1>Bienvenue sur la page de Randonnee !</h1></section>
+      <section>
+      <p>Trier par :</p>
+        <ul class="tri-menu">
+          <li><a href="Randonner.php?tri=nom">Nom</a></li>
+          <li><a href="Randonner.php?tri=popularite">Popularité</a></li>
+        </ul>
+      </section>
       <!-- traitement bdd -->
       <?php
- //Connexion au serveur
-$user = 'root';
-$pass = '';
-//$donnees = '';
-try{
-  $bd=new PDO('mysql:host=localhost;dbname=randoBDD',$user,$pass);
-  $a = $bd->query('SELECT nom, adresse FROM rando ORDER BY nom');
-// Affichage de chaque ligne
-  while(($donnees = $a->fetch(PDO::FETCH_ASSOC)) !== false){
-    echo '<a href="'.$donnees['nom'].'.html">'.$donnees['nom'].'</a><br><li><img src=puce.png , alt="localisation", width="15" height="15"/> Départ : '.$donnees['adresse'].'</li><br><br>';
+      //Connexion au serveur
+      $user = 'root';
+      $pass = '';
+      //$donnees = '';
+      try{
+        $bd=new PDO('mysql:host=localhost;dbname=randoBDD',$user,$pass);
+        $tri = isset($_GET['tri']) ? $_GET['tri'] : 'nom'; // Récupération du paramètre de tri
+        $requete = 'SELECT nom, adresse FROM rando';
+          if ($tri == 'nom') {
+            $requete .= ' ORDER BY nom'; // Tri par nom
+          } elseif ($tri == 'popularite') {
+            $requete .= ' ORDER BY score DESC'; // Tri par popularité (supposons que la colonne de popularité s'appelle 'popularite')
+          }
+          $resultat = $bd->query($requete);
+          // Affichage de chaque ligne
+          while(($donnees = $resultat->fetch(PDO::FETCH_ASSOC)) !== false){
+            echo '<a href="'.$donnees['nom'].'.html">'.$donnees['nom'].'</a><br><li><img src=puce.png , alt="localisation", width="15" height="15"/> Départ : '.$donnees['adresse'].'</li><br><br>';
 
-  }
-}
-catch(PDOException $e){
-  print"Erreur :" . $e->getMessage() . "<br/>";
-  die;
-}
-?>              
+          }
+        }
+        catch(PDOException $e){
+          print"Erreur :" . $e->getMessage() . "<br/>";
+          die;
+        }
+        ?>              
       </section>
     </main>
   </body>
