@@ -14,9 +14,9 @@
         <?php
             // Vérifier si l'utilisateur est connecté
             session_start();
-            $sessionId = session_id();
+            $iduser = $_SESSION['iduser'];
             if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-                echo $sessionId;
+                echo $iduser;
             }
             else{
                 echo '<li><a href="Connexion.php">Connexion</a></li>';
