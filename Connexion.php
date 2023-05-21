@@ -13,10 +13,10 @@
         <li><a href="Randonner.php">Randonner</a></li>
         <?php
             // Vérifier si l'utilisateur est connecté
-            session_start();
-            $sessionId = session_id();
             if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-                echo $sessionId;
+              session_start();
+              $iduser = $_SESSION['iduser'];
+              echo "<li>' $iduser '</li>";
             }
             else{
                 echo '<li><a href="Connexion.php">Connexion</a></li>';
@@ -54,20 +54,20 @@
         $user = 'root';
         $pass = '';
         try {
-          $bdd = new PDO('mysql:host=localhost;dbname=utilisateurs', $user, $pass);
+          $bdd = new PDO('mysql:host=localhost;dbname=randoBDD', $user, $pass);
           
           // Vérifier les identifiants de connexion
           $identifiant = $_POST['iduser'];
           $motDePasse = $_POST['mdpuser'];
-          $requete = $bdd->prepare('SELECT * FROM utilisateurs WHERE identifiant = :identifiant');
+          $requete = $bdd->prepare('SELECT * FROM utilisateurs WHERE id = :identifiant');
           $requete->bindParam(':identifiant', $identifiant);
           $requete->execute();
           $utilisateur = $requete->fetch();
 
-          if ($utilisateur && password_verify($motDePasse, $utilisateur['mot_de_passe'])) {
+          if ($utilisateur && $motDePasse === $utilisateur['pass']) {
             // Connexion réussie
              // Stocker iduser dans la variable de session
-              $_SESSION['iduser'] = $identifiant;
+             $_SESSION['iduser'] = $identifiant;
             // Initialiser la variable de session loggedIn
             session_start();
             $_SESSION['loggedIn'] = true;

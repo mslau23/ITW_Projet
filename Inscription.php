@@ -13,10 +13,10 @@
         <li><a href="Randonner.php">Randonner</a></li>
         <?php
             // Vérifier si l'utilisateur est connecté
-            session_start();
-            $iduser = $_SESSION['iduser'];
             if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-                echo $iduser;
+              session_start();
+              $iduser = $_SESSION['iduser'];
+              echo "<li>' $iduser '</li>";
             }
             else{
                 echo '<li><a href="Connexion.php">Connexion</a></li>';
@@ -52,11 +52,11 @@
         $user = 'root';
         $pass = '';
         try {
-          $bdd = new PDO('mysql:host=localhost;dbname=utilisateurs', $user, $pass);
+          $bdd = new PDO('mysql:host=localhost;dbname=randoBDD', $user, $pass);
           
           // Vérifier si l'identifiant existe déjà
           $identifiant = $_POST['iduser'];
-          $requete = $bdd->prepare('SELECT * FROM utilisateurs WHERE identifiant = :identifiant');
+          $requete = $bdd->prepare('SELECT * FROM utilisateurs WHERE id = :identifiant');
           $requete->bindParam(':identifiant', $identifiant);
           $requete->execute();
           $utilisateur = $requete->fetch();
@@ -66,8 +66,8 @@
             echo 'Cet identifiant est déjà utilisé. Veuillez en choisir un autre.';
           } else {
             // Insérer le nouvel utilisateur dans la base de données
-            $motDePasse = password_hash($_POST['mdpuser'], PASSWORD_DEFAULT);
-            $requete = $bdd->prepare('INSERT INTO utilisateurs (identifiant, mot_de_passe) VALUES (:identifiant, :mot_de_passe)');
+            $motDePasse = $_POST['mdpuser'];
+            $requete = $bdd->prepare('INSERT INTO utilisateurs (id, pass) VALUES (:identifiant, :mot_de_passe)');
             $requete->bindParam(':identifiant', $identifiant);
             $requete->bindParam(':mot_de_passe', $motDePasse);
             $requete->execute();

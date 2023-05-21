@@ -12,10 +12,10 @@
         <li><a href="Randonner.php">Randonner</a></li>
         <?php
             // Vérifier si l'utilisateur est connecté
-            session_start();
-            $iduser = $_SESSION['iduser'];
             if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-                echo $iduser;
+                session_start();
+                $iduser = $_SESSION['iduser'];
+                echo "<li>' $iduser '</li>";
             }
             else{
                 echo '<li><a href="Connexion.php">Connexion</a></li>';
