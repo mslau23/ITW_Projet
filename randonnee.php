@@ -48,24 +48,29 @@
 	?>
     <div class="popularity">
           <span>Popularité :</span>
-          <span class="score">0</span>
-          <button onclick="incrementPopularity(1)">1</button>
-          <button onclick="incrementPopularity(2)">2</button>
-          <button onclick="incrementPopularity(3)">3</button>
-          <button onclick="incrementPopularity(4)">4</button>
-          <button onclick="incrementPopularity(5)">5</button>
-          <script>
-              function incrementPopularity(value) {
-                  const scoreElement = document.querySelector('.popularity .score');
-                  let score = parseInt(scoreElement.textContent);
-                  if (score >= 5) {
-                      alert('Vous avez déjà donné la note maximale');
-                      return;
-                  }
-                  score = value;
-                  scoreElement.textContent = score.toString();
-              }
-          </script>
+          <span class="score">
+            <?php 
+            // Requête pour calculer la moyenne des scores
+            $query = $dbh->prepare('SELECT AVG(score) AS moyenne FROM score WHERE rando = :id_randonnee AND score IS NOT NULL');
+            $requete->bindParam(':id_randonnee', $id_randonnee);
+            $requete->execute();
+            $resultat = $requete->fetch();
+            $moyenne = $resultat['moyenne'];
+            if ($resultat && $resultat['moyenne'] !== null){
+                echo $moyenne;
+            }
+            else {
+                echo "0";
+            }
+            ?>
+            </span>
+            <form action="action_score.php" method="POST">
+                <button type="submit" name="score" value="1">1</button>
+                <button type="submit" name="score" value="2">2</button>
+                <button type="submit" name="score" value="3">3</button>
+                <button type="submit" name="score" value="4">4</button>
+                <button type="submit" name="score" value="5">5</button>
+            </form>
       </div>
 </body>
 </html>
