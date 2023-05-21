@@ -67,7 +67,7 @@
           if ($utilisateur && password_verify($motDePasse, $utilisateur['mot_de_passe'])) {
             // Connexion réussie
              // Stocker iduser dans la variable de session
-              $_SESSION['iduser'] = $iduser;
+              $_SESSION['iduser'] = $identifiant;
             // Initialiser la variable de session loggedIn
             session_start();
             $_SESSION['loggedIn'] = true;
