@@ -21,15 +21,9 @@
         <li><a href="Contribuer.php" class="actuel">Contribuer</a></li>
         <li><a href="Randonner.php">Randonner</a></li>
         <?php
-            // Vérifier si l'utilisateur est connecté
-            if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] !== true) {
-              session_start();
-              $iduser = $_SESSION['iduser'];
-              echo "<li>' $iduser '</li>";
-            }
-            else{
-                echo '<li><a href="Connexion.php">Connexion</a></li>';
-            }
+            // On a déjà vérifier si l'utilisateur est connecté
+            $iduser = $_SESSION['iduser'];
+            echo "<li>' $iduser '</li>";
             ?>
       </ul>
     </nav>
