@@ -27,9 +27,8 @@
               $iduser = $_SESSION['iduser'];
               echo "<li>' $iduser '</li>";
             }
-            else {
-              $iduser = $_SESSION['iduser'];
-              echo '<li><a href="Connexion.php" class="actuel">Connexion</a></li>';
+            else{
+                echo '<li><a href="Connexion.php">Connexion</a></li>';
             }
             ?>
       </ul>

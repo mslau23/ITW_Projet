@@ -69,6 +69,17 @@ $pageHtml = '
   <ul class="barre-de-menu">
     <li><a href="Contribuer.php">Contribuer</a></li>
     <li><a href="Randonner.php">Randonner</a></li>
+    <?php
+            // Vérifier si l\'utilisateur est connecté
+            if (!isset($_SESSION[\'loggedIn\']) || $_SESSION[\'loggedIn\'] !== true) {
+              session_start();
+              $iduser = $_SESSION[\'iduser\'];
+              echo "<li>\' $iduser \'</li>";
+            }
+            else{
+                echo \'<li><a href="Connexion.php">Connexion</a></li>\';
+            }
+            ?>
   </ul>
 </nav>
 <section><h1>'.$nom.'</h1></section>

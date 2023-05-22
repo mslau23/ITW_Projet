@@ -98,8 +98,8 @@
   .popularity button:hover {
     background-color: var(--couleur-2);
   }
-  /*Style de la page exemple*/
-  .imageLac { 
+  /*Style des pages randonnee*/
+  .image { 
     margin:0px;
     
    }
