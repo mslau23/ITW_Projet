@@ -1,116 +1,126 @@
 :root {
-    --couleur-6: #e5f7de;
-    --couleur-5: #c9ffb2;
-    --couleur-4: #adffa2;
-    --couleur-3: #a9e598;
-    --couleur-2: #8db583;
-    --couleur-1: #769176;
-    --couleur-0: #68756c;
-  }
-  
-  body {
-    font-family: "Gill Sans", sans-serif;
-    font-size: 20px;
-    margin: 0;
-  }
-  
-  main {
-    width: 800px;
-    margin: auto;
-  }
-  
-  h1,
-  h2 {
-    color: var(--couleur-0);
-  }
-  li{
-    list-style-type: none;
-    margin-top: 15px;
-  }
+  --couleur-6: #e5f7de;
+  --couleur-5: #c9ffb2;
+  --couleur-4: #adffa2;
+  --couleur-3: #a9e598;
+  --couleur-2: #8db583;
+  --couleur-1: #769176;
+  --couleur-0: #68756c;
+}
 
-  td{
-    margin-top: 50px;
-  }
-  .rando{
-    margin-top: 15px;
-  }
-  /*style des barre de menu*/
-  .barre-de-menu {
-    background-color: var(--couleur-0);
-    margin: 0;
-    padding: 10px 0;
-    text-align: center;
-  }
-  
-  .barre-de-menu > li {
-    list-style: none;
-    display: inline;
-  }
-  
-  .barre-de-menu > li > a {
-    color: var(--couleur-6);
-    margin: 0 5px;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .barre-de-menu > li > a:hover {
-    background-color: var(--couleur-6);
-    color: var(--couleur-0);
-  }
-  
-  .barre-de-menu > li > a.actuel {
-    border: var(--couleur-5) 5px;
-    border-bottom-style: solid;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  /*Style du score des pages radonnées*/
-  .popularity {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .popularity span {
-    margin-right: 10px;
-  }
-  
-  .popularity .score {
-    font-weight: bold;
-    margin-right: 10px;
-  }
-  
-  .popularity button {
-    background-color: var(--couleur-4);
-    border: none;
-    color: var(--couleur-6);
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .popularity button:hover {
-    background-color: var(--couleur-2);
-  }
-  /*Style des pages randonnee*/
-  .image { 
-    margin:0px;
-    
-   }
+body {
+  font-family: "Gill Sans", sans-serif;
+  font-size: 20px;
+}
 
-   .icones{
-    text-align: center;
-    margin-left: 50px;
-   }
+main {
+  width: 800px;
+  margin:auto;
+}
 
-   .A{
-    margin-left: 10px;
-    margin-top: 15px;
-   }
+h1,
+h2 {
+  color: var(--couleur-0);
+  text-align: center;
+}
+
+
+li{
+  list-style-type: none;
+  margin-top: 15px;
+}
+
+td{
+  margin-top: 50px;
+}
+.rando{
+  margin-top: 15px;
+}
+/*style des barre de menu*/
+.barre-de-menu {
+  background-color: var(--couleur-0);
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.barre-de-menu > li {
+  list-style: none;
+  display: inline;
+}
+
+.barre-de-menu > li > a {
+  color: var(--couleur-6);
+  margin: 0 5px;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.barre-de-menu > li > a:hover {
+  background-color: var(--couleur-6);
+  color: var(--couleur-0);
+}
+
+.barre-de-menu > li > a.actuel {
+  border: var(--couleur-5) 5px;
+  border-bottom-style: solid;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/*Style du score des pages radonnées*/
+.popularity {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.popularity span {
+  margin-right: 10px;
+}
+
+.popularity .score {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.popularity button {
+  background-color: var(--couleur-4);
+  border: none;
+  color: var(--couleur-6);
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.popularity button:hover {
+  background-color: var(--couleur-2);
+}
+
+.pageAuto >body{
+  text-align: center;
+  margin-left: 50px;
+}
+ /*Style de la page exemple*/
+.imageLac { 
+  margin:0px;
   
+ }
+
+ .icones{
+  text-align: center;
+  margin-left: 50px;
+ }
+
+ .A{
+  margin-left: 10px;
+  margin-top: 15px;
+ }
+
+
+
