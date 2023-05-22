@@ -97,12 +97,16 @@ $pageHtml = '
         
         
         // Requête pour calculer la moyenne des scores
-        $query = "SELECT AVG(score) AS moyenne FROM score WHERE rando = '.$nom.' AND score IS NOT NULL";
+        $query = "SELECT AVG(score) AS moyenne FROM score WHERE rando = \' '.$nom. ' \' AND score IS NOT NULL";
         
         $resultat = $bd->query($query);
-        
-        
-        echo $resultat;
+        if ($resultat) {
+    $row = $resultat->fetch(PDO::FETCH_ASSOC);
+    $moyenne = $row[\'moyenne\'];
+    echo $moyenne;
+} else {
+    echo "0";
+}
     
   }
   catch(PDOException $e){
