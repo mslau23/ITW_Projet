@@ -85,32 +85,37 @@ $pageHtml = '
       <!--score de popularité avec un bouton jaime-->
   <div class="popularity">
               <span>Popularité :</span>
-              <span class="score"></span>
-              
-     <form action="'.$nom.'.php">
-              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="1") { echo "style=color:green";} ?>  name="choix" value="1" onclick="insert()">1</button>
-              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="2") { echo "style=color:green";} ?> name="choix" value="2" onclick="insert()">2</button>
-              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="3") { echo "style=color:green";} ?> name="choix" value="3" onclick="insert()">3</button>
-              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="4") { echo "style=color:green";} ?> name="choix" value="4" onclick="insert()">4</button>
-              <button type="submit" <?php if (isset($_GET[\'choix\'])!=null && $_GET[\'choix\']=="5") { echo "style=color:green";} ?> name="choix" value="5" onclick="insert()">5</button>
-     </form>
+              <span class="score">
 
-     <?php
-        if (isset($_GET[\'choix\'])) {
-           //connection à la bdd pour enregistrer le score
-          $user = \'root\';
-          $pass = \'\';
- 
-          //Création d une nouvelle ligne dans la base de donnée selon les informations rentrées par l utilisateur
-          $bd=new PDO(\'mysql:host=localhost;dbname=randobdd\',$user,$pass);
-          $note=$_GET[\'choix\'];
-          
-
-          $scoreSQL = \'UPDATE rando SET score = \'.$note.\' WHERE nom= "'.$nom.'"\';
-          $bd->query($scoreSQL);
+              <?php 
+              // Connexion à la base de données
+              $connexion = mysqli_connect(\'localhost\', \'utilisateur\', \'motdepasse\', \'ma_base_de_donnees\');
+              if (!$connexion) {
+                die(\'Erreur de connexion à la base de données\');
+              }
+        
+        // Requête pour calculer la moyenne des scores
+        $query = "SELECT AVG(score) AS moyenne FROM score WHERE id_randonnee = $id_randonnee AND score IS NOT NULL";
+        $resultat = mysqli_query($connexion, $query);
+        
+        if ($resultat && mysqli_num_rows($resultat) > 0) {
+            $row = mysqli_fetch_assoc($resultat);
+            $moyenne = $row[\'moyenne\'];
+            echo $moyenne;
+        } else {
+            echo "0";
         }
-     ?>
-     </div>
+        ?>
+        </span>
+              
+        <form action="action_score.php" method="POST">
+        <button type="submit" name="score" value="1">1</button>
+        <button type="submit" name="score" value="2">2</button>
+        <button type="submit" name="score" value="3">3</button>
+        <button type="submit" name="score" value="4">4</button>
+        <button type="submit" name="score" value="5">5</button>
+    </form>
+    </div>
 </section>
 </body>
 </html>';
