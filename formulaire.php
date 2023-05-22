@@ -88,23 +88,27 @@ $pageHtml = '
               <span class="score">
 
               <?php 
-              // Connexion à la base de données
-              $connexion = mysqli_connect(\'localhost\', \'utilisateur\', \'motdepasse\', \'ma_base_de_donnees\');
-              if (!$connexion) {
-                die(\'Erreur de connexion à la base de données\');
-              }
+              //Connexion au serveur
+      $user = \'root\';
+      $pass = \'\';
+      //$donnees = \'\';
+      try{
+        $bd=new PDO(\'mysql:host=localhost;dbname=randoBDD\',$user,$pass);
+        
         
         // Requête pour calculer la moyenne des scores
-        $query = "SELECT AVG(score) AS moyenne FROM score WHERE id_randonnee = $id_randonnee AND score IS NOT NULL";
+        $query = "SELECT AVG(score) AS moyenne FROM score WHERE id_randonnee = $nom AND score IS NOT NULL";
         $resultat = mysqli_query($connexion, $query);
+        $resultat = $bd->query($query);
         
-        if ($resultat && mysqli_num_rows($resultat) > 0) {
-            $row = mysqli_fetch_assoc($resultat);
-            $moyenne = $row[\'moyenne\'];
-            echo $moyenne;
-        } else {
-            echo "0";
-        }
+        
+        echo $resultat;
+    
+  }
+  catch(PDOException $e){
+    print"Erreur :" . $e->getMessage() . "<br/>";
+    die;
+  }
         ?>
         </span>
               
